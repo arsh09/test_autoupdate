@@ -46,7 +46,7 @@ jobs:
 
       - name: Setup SSM KSP on windows latest 
         run: | 
-          msiexec /i keylockertools-windows-x64.msi /quiet /qn 
+          msiexec /i "./code_sign/keylockertools-windows-x64.msi /quiet /qn 
 
         shell: cmd 
 

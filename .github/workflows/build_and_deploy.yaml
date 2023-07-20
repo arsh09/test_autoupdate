@@ -44,20 +44,18 @@ jobs:
         shell: bash 
 
 
-      # - name: Setup SSM KSP on windows latest 
-      #   run: | 
-      #     curl -X GET  https://stage.one.digicert.com/signingmanager/api-ui/v1/releases/smtools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o smtools-windows-x64.msi 
-      #     dir 
-      #     msiexec /i smtools-windows-x64.msi /quiet /qn 
+      - name: Setup SSM KSP on windows latest 
+        run: | 
+          msiexec /i keylockertools-windows-x64.msi /quiet /qn 
 
-      #   shell: cmd 
+        shell: cmd 
 
       - name: Check
         run: | 
-          .\code_sign\smksp_registrar.exe list
-          .\code_sign\smctl.exe keypair ls 
+          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe list
+          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smctl.exe keypair ls 
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user 
-          .\code_sign\smksp_cert_sync.exe 
+          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_cert_sync.exe 
         
         shell: cmd 
         

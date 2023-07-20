@@ -1,4 +1,4 @@
-name: CapnoTrainer - Build & Release
+name: CapnoTrainer - Setup Digital Signing
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: 'Build on Node v${{ matrix.node }} ${{ matrix.os.name }} ${{ matrix.arch }}'
+    name: Setup SMM 
     runs-on: ${{ matrix.os.name }}-${{ matrix.os.version }}
 
     strategy:
@@ -50,7 +50,7 @@ jobs:
           dir 
           msiexec /i smtools-windows-x64.msi /quiet /qn 
 
-        shell: bash 
+        shell: cmd 
 
 
       - name: Check
@@ -60,5 +60,5 @@ jobs:
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user 
           smksp_cert_sync.exe 
         
-        shell: bash 
+        shell: cmd 
         

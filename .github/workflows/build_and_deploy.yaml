@@ -44,18 +44,18 @@ jobs:
         shell: bash 
 
 
-      - name: Setup SSM KSP on windows latest 
-        run: | 
-          msiexec /i "./code_sign/keylockertools-windows-x64.msi /quiet /qn 
-
-        shell: cmd 
+      # - name: Setup SSM KSP on windows latest 
+      #   run: | 
+      #     msiexec /i keylockertools-windows-x64.msi /quiet /qn 
+      #   shell: cmd 
 
       - name: Check
         run: | 
-          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe list
-          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smctl.exe keypair ls 
+          smksp_registrar.exe register
+          smksp_registrar.exe list
+          smctl.exe keypair ls 
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user 
-          C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_cert_sync.exe 
+          smksp_cert_sync.exe 
         
         shell: cmd 
         

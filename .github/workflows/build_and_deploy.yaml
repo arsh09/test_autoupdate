@@ -44,10 +44,11 @@ jobs:
         shell: bash 
 
 
-      # - name: Setup SSM KSP on windows latest 
-      #   run: | 
-      #     msiexec /i keylockertools-windows-x64.msi /quiet /qn 
-      #   shell: cmd 
+      - name: Setup SSM KSP on windows latest 
+        run: | 
+          msiexec /i Keylockertools-windows-x64 /quiet /qn 
+          dir
+        shell: cmd 
 
       - name: Check
         run: | 

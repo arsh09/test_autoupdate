@@ -47,24 +47,26 @@ jobs:
       - name: Setup SSM KSP on windows latest 
         run: | 
           msiexec /i Keylockertools-windows-x64 /quiet /qn 
-          dir
-        shell: cmd 
-
-      - name: Check
-        run: | 
           "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe" register
           "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe" list   
           "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smctl.exe" keypair ls
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user 
-          "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_cert_sync.exe"    
-        
+          "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_cert_sync.exe"  
         shell: cmd 
 
-    env: 
+      # - name: Check
+      #   run: | 
+      #     "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe" register
+      #     "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_registrar.exe" list   
+      #     "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smctl.exe" keypair ls
+      #     C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user 
+      #     "C:\Program Files\DigiCert\DigiCert Keylocker Tools\smksp_cert_sync.exe"    
 
-      SM_API_KEY: ${{secrets.SM_API_KEY}}  
-      SM_CLIENT_CERT_PASSWORD: ${{secrets.SM_CLIENT_CERT_PASSWORD}}  
-      SM_CLIENT_CERT_FILE: ${{secrets.SM_CLIENT_CERT_FILE}} 
+      #   shell: cmd 
+      #   env: 
+      #     SM_API_KEY: ${{secrets.SM_API_KEY}}  
+      #     SM_CLIENT_CERT_PASSWORD: ${{secrets.SM_CLIENT_CERT_PASSWORD}}  
+      #     SM_CLIENT_CERT_FILE: ${{secrets.SM_CLIENT_CERT_FILE}} 
 
 
       # - name: Check
